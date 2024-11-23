@@ -1,8 +1,8 @@
 // Select the dropdown menu element from the DOM
-const pokemonSelect = document.querySelector(".pokemon-select select");
+export const pokemonSelect = document.querySelector(".pokemon-select select");
 
 // Create a container for displaying Pokémon details and add it to the DOM
-const pokemonDetails = document.createElement("div");
+export const pokemonDetails = document.createElement("div");
 pokemonDetails.classList.add("pokemon-details");
 document.body.appendChild(pokemonDetails);
 
@@ -14,7 +14,7 @@ async function fetchData() {
     const data = await response.json(); // Parse the JSON response
     const pokemonList = data.results; // Extract the list of Pokémon
 
-    // Populate the dropdown menu with Pokémon options
+    //     // Populate the dropdown menu with Pokémon options
     for (const pokemon of pokemonList) {
       const option = document.createElement("option"); // Create a new <option> element
       option.value = pokemon.url; // Set the value to the Pokémon's API URL
@@ -22,7 +22,7 @@ async function fetchData() {
       pokemonSelect.appendChild(option); // Add the option to the dropdown menu
     }
 
-    // Add an event listener to handle dropdown changes
+    //     // Add an event listener to handle dropdown changes
     pokemonSelect.addEventListener("change", displayPokemonDetails);
   } catch (error) {
     // Log an error if the fetch operation fails
@@ -30,7 +30,7 @@ async function fetchData() {
   }
 }
 
-// Fetch and display details of the selected Pokémon
+// // Fetch and display details of the selected Pokémon
 async function displayPokemonDetails(event) {
   const url = event.target.value; // Get the API URL of the selected Pokémon
   if (!url) return; // If no Pokémon is selected, exit the function
@@ -65,10 +65,10 @@ async function displayPokemonDetails(event) {
   }
 }
 
-// Capitalize the first letter of a string
+//Capitalize the first letter of a string
 function capitalize(str) {
   return str.charAt(0).toUpperCase() + str.slice(1); // Capitalize the first letter and append the rest of the string
 }
 
-// Call the fetchData function to populate the dropdown on page load
+//Call the fetchData function to populate the dropdown on page load
 fetchData();
